@@ -2,9 +2,8 @@
 import { subscribe } from 'svelte/internal';
 
     import {chords} from './store';
-    let count: number = 0
-    const keyIn= (note:string,key:string)=>{
-        chords.chordPressed({note,key});
+    const keyIn= (note:string, type:string)=>{
+        chords.chordPressed({note,type});
         
     }
     const keys= ["Eb","Bb","F","C","G","D","A","E","B"];

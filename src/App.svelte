@@ -1,12 +1,13 @@
 <script lang="ts">
-  import logo from './assets/svelte.png'
   import Board from './lib/Board.svelte'
+import SynthModule from './lib/SynthModule.svelte'
 </script>
 
 <main>
   <h1>Hello Hack</h1>
 
   <Board/>
+  <SynthModule/>
 </main>
 
 <style>
@@ -21,11 +22,6 @@
     margin: 0 auto;
   }
 
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
   h1 {
     color: #ff3e00;
     text-transform: uppercase;
@@ -34,12 +30,6 @@
     line-height: 1.1;
     margin: 2rem auto;
     max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
   }
 
   @media (min-width: 480px) {
