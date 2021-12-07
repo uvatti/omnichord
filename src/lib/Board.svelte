@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { subscribe } from "svelte/internal";
+  import KeyLabels from "./KeyLabels.svelte";
 
   import { Chord, chords } from "./store";
 
@@ -26,38 +26,36 @@
     console.log(value);
   });
 
-  const keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B"];
+  export const keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B"];
 </script>
 
 <div class="board-wrapper">
-  <div class="major note">
+  <KeyLabels {keys} />
+  <div class="note">
+    <div class="chord-type">Maj</div>
     {#each keys as k}
       <div
         class="board-button"
         on:click={() => keyIn({ note: k, type: "major" })}
-      >
-        {k}
-      </div>
+      />
     {/each}
   </div>
   <div class="minor note">
+    <div class="chord-type">Min</div>
     {#each keys as k}
       <div
         class="board-button"
         on:click={() => keyIn({ note: k, type: "minor" })}
-      >
-        {k}
-      </div>
+      />
     {/each}
   </div>
   <div class="th note">
+    <div class="chord-type">7th</div>
     {#each keys as k}
       <div
         class="board-button"
         on:click={() => keyIn({ note: k, type: "min7" })}
-      >
-        {k}
-      </div>
+      />
     {/each}
   </div>
   <button on:click={() => console.log(chords.subscribe)}> SUBS</button>
@@ -80,6 +78,11 @@
   }
   .note.th {
     padding-left: 120px;
+  }
+  .chord-type {
+    width: 30px;
+    display: flex;
+    align-items: center;
   }
   .board-button {
     display: flex;
