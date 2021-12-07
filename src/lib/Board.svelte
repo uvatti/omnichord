@@ -27,6 +27,49 @@
   });
 
   const keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B"];
+
+  const major = ["q", "w", "e", "r", "t", "y", "u", "i", "o"];
+  const minor = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+  const th = ["z", "x", "c", "v", "b", "n", "m", ",", "."];
+  const pressed = [];
+
+  window.addEventListener(
+    "keydown",
+    (e) => {
+      if (!pressed.includes(e.key)) {
+        if (major.includes(e.key)) {
+          pressed.push(e.key);
+          keyIn({ note: keys[major.indexOf(e.key)], type: "major" });
+        }
+        if (minor.includes(e.key)) {
+          pressed.push(e.key);
+          keyIn({ note: keys[minor.indexOf(e.key)], type: "minor" });
+        }
+        if (th.includes(e.key)) {
+          pressed.push(e.key);
+          keyIn({ note: keys[th.indexOf(e.key)], type: "min7" });
+        }
+      }
+    },
+    true
+  );
+
+    document.addEventListener("keyup",(e)=>{
+        if (pressed.includes(e.key)) {
+        if (major.includes(e.key)) {
+          pressed.splice(pressed.indexOf(e.key),1);
+          keyIn({ note: keys[major.indexOf(e.key)], type: "major" });
+        }
+        if (minor.includes(e.key)) {
+            pressed.splice(pressed.indexOf(e.key),1);
+          keyIn({ note: keys[minor.indexOf(e.key)], type: "minor" });
+        }
+        if (th.includes(e.key)) {
+            pressed.splice(pressed.indexOf(e.key),1);
+          keyIn({ note: keys[th.indexOf(e.key)], type: "min7" });
+        }
+      }
+    },true)
 </script>
 
 <div class="board-wrapper">
