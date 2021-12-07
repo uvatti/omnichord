@@ -6,7 +6,7 @@ export const chordStore = () => {
 
   return {
     subscribe,
-    chordPressed: (chord: Chord) => update((chords) => [...chords, chord]),
+    chordPressed: (chord: Chord) => {update((chords) => [...chords, chord])},
     chordReleased: ({ note, type }: Chord) =>
       update((chords) =>
         chords.filter((c) => c.note === note && c.type === type)
