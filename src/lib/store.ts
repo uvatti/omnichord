@@ -9,7 +9,7 @@ export const chordStore = () => {
     chordPressed: (chord: Chord) => update((chords) => [...chords, chord]),
     chordReleased: ({ note, type }: Chord) =>
       update((chords) =>
-        chords.filter((c) => !(c.note === note && c.type === type))
+        chords.filter((c) => c.note === note && c.type === type)
       ),
   };
 };

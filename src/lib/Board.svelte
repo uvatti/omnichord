@@ -1,5 +1,6 @@
 <script lang="ts">
-  import KeyLabels from "./KeyLabels.svelte";
+  import ChordButton from "./ChordButton.svelte";
+import KeyLabels from "./KeyLabels.svelte";
 
   import { Chord, chords } from "./store";
 
@@ -31,8 +32,9 @@
   const major = ["q", "w", "e", "r", "t", "y", "u", "i", "o"];
   const minor = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
   const th = ["z", "x", "c", "v", "b", "n", "m", ",", "."];
-  const pressed = [];
-
+  let pressed:any = [];
+  $: console.log("^^^ activeBox &&", pressed);
+  $: isSelected = (k) => { console.log(k); return pressed.includes(k)};
   window.addEventListener(
     "keydown",
     (e) => {
@@ -81,28 +83,25 @@
   <div class="note">
     <div class="chord-type">Maj</div>
     {#each keys as k}
-      <div
+      <!-- <div
         class="board-button"
         on:click={() => keyIn({ note: k, type: "major" })}
-      />
+      /> -->
+      
+      <ChordButton isActive={isSelected(k)}/>
     {/each}
   </div>
   <div class="minor note">
     <div class="chord-type">Min</div>
     {#each keys as k}
-      <div
-        class="board-button"
-        on:click={() => keyIn({ note: k, type: "minor" })}
-      />
+      
+      <ChordButton />
     {/each}
   </div>
   <div class="th note">
     <div class="chord-type">7th</div>
     {#each keys as k}
-      <div
-        class="board-button"
-        on:click={() => keyIn({ note: k, type: "min7" })}
-      />
+    <ChordButton />
     {/each}
   </div>
   <button on:click={() => console.log(chords.subscribe)}> SUBS</button>
@@ -131,16 +130,7 @@
     display: flex;
     align-items: center;
   }
-  .board-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
+  
   button {
     font-family: inherit;
     font-size: inherit;
