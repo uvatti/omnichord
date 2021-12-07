@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 
 export type Chord = { note: string; type: string };
-export const chordStore = () => {
+const chordStore = () => {
   const { subscribe, update } = writable([]);
 
   return {
