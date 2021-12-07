@@ -2,10 +2,24 @@
 import { subscribe } from 'svelte/internal';
 
     import {chords} from './store';
+    
+    let subs;
     const keyIn= (note:string, type:string)=>{
+       if(checkIfPressed(note,type)){
+        chords.chordReleased({note,type});
+       }else{
         chords.chordPressed({note,type});
-        
+       }
     }
+    const checkIfPressed = (note:string, type:string)=>{
+        return subs.filter((keys)=>{return keys.note === note && keys.type === type}).length > 0;
+    }
+
+    chords.subscribe(value => {
+		subs = value;
+        console.log(value);
+	});
+
     const keys= ["Eb","Bb","F","C","G","D","A","E","B"];
   </script>
 
