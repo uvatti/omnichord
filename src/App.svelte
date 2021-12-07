@@ -1,19 +1,20 @@
 <script lang="ts">
-  import Board from './lib/Board.svelte'
-import SynthModule from './lib/SynthModule.svelte'
+  import Board from "./lib/Board.svelte";
+  import SynthModule from "./lib/SynthModule.svelte";
 </script>
 
 <main>
   <h1>Hello Hack</h1>
 
-  <Board/>
-  <SynthModule/>
+  <Board />
+  <SynthModule />
 </main>
 
 <style>
   :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: #222;
   }
 
   main {

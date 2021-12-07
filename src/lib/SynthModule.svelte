@@ -4,13 +4,14 @@
   import { Chord } from "@tonaljs/tonal";
   const synth = new Tone.PolySynth(Tone.Synth).toDestination();
   chords.subscribe((chords) => {
+    console.log(chords, chords.length);
     const currentChord = chords[chords.length - 1];
+    synth.releaseAll();
     if (currentChord) {
       const { notes } = Chord.getChord(
         currentChord.type,
         currentChord.note + "3" // Root not begins on third octave
       );
-      synth.releaseAll();
       synth.triggerAttack(notes);
     }
   });

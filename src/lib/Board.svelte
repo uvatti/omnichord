@@ -6,10 +6,10 @@
   let subs;
   const keyIn = (chord: Chord) => {
     if (checkIfPressed(chord)) {
-        console.log("released");
+      console.log("released");
       chords.chordReleased(chord);
     } else {
-        console.log("pressed");
+      console.log("pressed");
       chords.chordPressed(chord);
     }
   };
@@ -54,22 +54,26 @@
     true
   );
 
-    document.addEventListener("keyup",(e)=>{
-        if (pressed.includes(e.key)) {
+  document.addEventListener(
+    "keyup",
+    (e) => {
+      if (pressed.includes(e.key)) {
         if (major.includes(e.key)) {
-          pressed.splice(pressed.indexOf(e.key),1);
+          pressed.splice(pressed.indexOf(e.key), 1);
           keyIn({ note: keys[major.indexOf(e.key)], type: "major" });
         }
         if (minor.includes(e.key)) {
-            pressed.splice(pressed.indexOf(e.key),1);
+          pressed.splice(pressed.indexOf(e.key), 1);
           keyIn({ note: keys[minor.indexOf(e.key)], type: "minor" });
         }
         if (th.includes(e.key)) {
-            pressed.splice(pressed.indexOf(e.key),1);
+          pressed.splice(pressed.indexOf(e.key), 1);
           keyIn({ note: keys[th.indexOf(e.key)], type: "min7" });
         }
       }
-    },true)
+    },
+    true
+  );
 </script>
 
 <div class="board-wrapper">
@@ -134,7 +138,8 @@
     margin: 10px;
     width: 50px;
     height: 50px;
-    background: gray;
+    border: 1px solid #ddd;
+    border-radius: 8px;
   }
   button {
     font-family: inherit;
