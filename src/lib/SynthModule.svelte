@@ -7,8 +7,8 @@
     const currentChord = chords[chords.length - 1];
     if (currentChord) {
       const { notes } = Chord.getChord(
-        currentChord.note,
-        currentChord.type + "3" // Root not begins on third octave
+        currentChord.type,
+        currentChord.note + "3" // Root not begins on third octave
       );
       synth.releaseAll();
       synth.triggerAttack(notes);

@@ -6,10 +6,8 @@
   let subs;
   const keyIn = (chord: Chord) => {
     if (checkIfPressed(chord)) {
-      console.log("released");
       chords.chordReleased(chord);
     } else {
-      console.log("pressed");
       chords.chordPressed(chord);
     }
   };
