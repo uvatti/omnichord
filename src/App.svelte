@@ -5,7 +5,7 @@
 </script>
 
 <main>
-  <h1>Hello Hack</h1>
+  <h1>Omnichord</h1>
   <div class="container">
     <ToneSwitch />
     <Board />
@@ -27,9 +27,9 @@
   }
 
   h1 {
-    color: #ff3e00;
+    color: #04a8bc;
     text-transform: uppercase;
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 100;
     line-height: 1.1;
     margin: 2rem auto;

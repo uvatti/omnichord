@@ -50,7 +50,8 @@
     width: 30px;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    color: #061d42;
+    border: 1px solid #061d42;
     border-radius: 50%;
     cursor: pointer;
   }
@@ -58,8 +59,8 @@
     background: #eee;
   }
   .type.selected {
-    background: purple;
-    border-color: purple;
+    background: #061d42;
+    border-color: #061d42;
     color: white;
   }
 </style>

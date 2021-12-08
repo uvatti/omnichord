@@ -24,11 +24,11 @@
     border-radius: 8px;
   }
   .board-button.active {
-    background: #061D42;
-    border: 1px solid white;
+    background: #04a8bc;
+    border-color: #04a8bc;
   }
   .board-button.active.latest {
-    background: #04A8BC; 
-    border: 1px solid white;
+    background: #061d42;
+    border-color: #061d42;
   }
 </style>

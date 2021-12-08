@@ -14,6 +14,6 @@
     margin-left: 30px;
   }
   .key {
-    width: 70px;
+    width: 72px;
   }
 </style>
