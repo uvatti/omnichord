@@ -3,28 +3,20 @@
 
   import { Chord, chords } from "./store";
 
-  let subs;
   const keyIn = (chord: Chord) => {
     if (checkIfPressed(chord)) {
-      console.log("released");
       chords.chordReleased(chord);
     } else {
-      console.log("pressed");
       chords.chordPressed(chord);
     }
   };
   const checkIfPressed = ({ note, type }: Chord) => {
     return (
-      subs.filter((keys) => {
+      $chords.filter((keys) => {
         return keys.note === note && keys.type === type;
       }).length > 0
     );
   };
-
-  chords.subscribe((value) => {
-    subs = value;
-    console.log(value);
-  });
 
   const keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B"];
 

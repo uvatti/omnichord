@@ -1,12 +1,15 @@
 <script lang="ts">
   import Board from "./lib/Board.svelte";
   import SynthModule from "./lib/SynthModule.svelte";
+  import ToneSwitch from "./lib/ToneSwitch.svelte";
 </script>
 
 <main>
   <h1>Hello Hack</h1>
-
-  <Board />
+  <div class="container">
+    <ToneSwitch />
+    <Board />
+  </div>
   <SynthModule />
 </main>
 
@@ -31,6 +34,10 @@
     line-height: 1.1;
     margin: 2rem auto;
     max-width: 14rem;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
   }
 
   @media (min-width: 480px) {

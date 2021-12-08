@@ -1,5 +1,7 @@
 import { writable } from "svelte/store";
+import type { NonCustomOscillatorType } from "tone/build/esm/source/oscillator/OscillatorInterface";
 
+export type OscillatorType = NonCustomOscillatorType;
 export type Chord = { note: string; type: string };
 const chordStore = () => {
   const { subscribe, update } = writable([]);
@@ -15,3 +17,26 @@ const chordStore = () => {
 };
 
 export const chords = chordStore();
+
+export const oscillators: Record<string, OscillatorType> = {
+  saw: "sawtooth",
+  sine: "sine",
+  square: "square",
+  triangle: "triangle",
+};
+
+const defaultSound = {
+  oscillator: oscillators.saw,
+};
+
+const soundStore = () => {
+  const { subscribe, update } = writable(defaultSound);
+
+  return {
+    subscribe,
+    setOscillator: (oscillator: OscillatorType) =>
+      update((soundSettings) => ({ ...soundSettings, oscillator })),
+  };
+};
+
+export const soundSettings = soundStore();
