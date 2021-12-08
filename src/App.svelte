@@ -17,7 +17,7 @@
   :root {
     font-family: Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    color: #222;
+    color: #061d42;
   }
 
   main {

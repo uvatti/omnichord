@@ -21,7 +21,7 @@
     width: 50px;
     height: 50px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
   }
   .board-button.active {
     background: #04a8bc;

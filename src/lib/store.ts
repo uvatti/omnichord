@@ -26,7 +26,7 @@ export const oscillators: Record<string, OscillatorType> = {
 };
 
 const defaultSound = {
-  oscillator: oscillators.saw,
+  oscillator: oscillators.triangle,
 };
 
 const soundStore = () => {
