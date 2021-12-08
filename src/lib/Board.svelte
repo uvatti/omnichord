@@ -26,10 +26,10 @@
   const th = ["z", "x", "c", "v", "b", "n", "m", ",", "."];
   let pressed = [];
   $: isSelected = (note, type) => {
-    return subs.filter((c) => c.note === note && c.type === type).length > 0;
+    return $chords.filter((c) => c.note === note && c.type === type).length > 0;
   };
   $: isLatest = (note, type) => {
-    let temp = subs.findIndex((c) => c.note === note && c.type === type);
+    let temp = $chords.findIndex((c) => c.note === note && c.type === type);
     return temp === pressed.length - 1;
   };
 
