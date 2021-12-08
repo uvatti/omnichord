@@ -1,17 +1,19 @@
 <script lang="ts">
-    export let isActive = false;
-    let note:string, type:string;
-  </script>
-  
-    <main>
-        <div
-        class="board-button"
-      ></div>
-        {isActive}
-  </main>
+  export let isActive = false,
+    isLatest = false;
+  let note: string, type: string;
+</script>
 
-  <style>
-   .board-button {
+<main>
+  <div
+    class={`board-button ${isActive ? "active" : ""} ${
+      isLatest ? "latest" : ""
+    }`}
+  />
+</main>
+
+<style>
+  .board-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,5 +23,12 @@
     border: 1px solid #ddd;
     border-radius: 8px;
   }
-  </style>
-  
+  .board-button.active {
+    background: #061D42;
+    border: 1px solid white;
+  }
+  .board-button.active.latest {
+    background: #04A8BC; 
+    border: 1px solid white;
+  }
+</style>

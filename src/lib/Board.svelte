@@ -1,6 +1,6 @@
 <script lang="ts">
   import ChordButton from "./ChordButton.svelte";
-import KeyLabels from "./KeyLabels.svelte";
+  import KeyLabels from "./KeyLabels.svelte";
 
   import { Chord, chords } from "./store";
 
@@ -32,10 +32,16 @@ import KeyLabels from "./KeyLabels.svelte";
   const major = ["q", "w", "e", "r", "t", "y", "u", "i", "o"];
   const minor = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
   const th = ["z", "x", "c", "v", "b", "n", "m", ",", "."];
-  let pressed:any = [];
-  $: console.log("^^^ activeBox &&", pressed);
-  $: isSelected = (k) => { console.log(k); return pressed.includes(k)};
-  window.addEventListener(
+  let pressed = [];
+  $: isSelected = (note, type) => {
+    return subs.filter((c) => c.note === note && c.type === type).length > 0;
+  };
+  $: isLatest = (note, type) => {
+    let temp = subs.findIndex((c) => c.note === note && c.type === type);
+    return temp === pressed.length - 1;
+  };
+
+  document.addEventListener(
     "keydown",
     (e) => {
       if (!pressed.includes(e.key)) {
@@ -83,28 +89,30 @@ import KeyLabels from "./KeyLabels.svelte";
   <div class="note">
     <div class="chord-type">Maj</div>
     {#each keys as k}
-      <!-- <div
-        class="board-button"
-        on:click={() => keyIn({ note: k, type: "major" })}
-      /> -->
-      
-      <ChordButton isActive={isSelected(k)}/>
+      <ChordButton
+        isLatest={isLatest(k, "major")}
+        isActive={isSelected(k, "major")}
+      />
     {/each}
   </div>
   <div class="minor note">
     <div class="chord-type">Min</div>
     {#each keys as k}
-      
-      <ChordButton />
+      <ChordButton
+        isLatest={isLatest(k, "minor")}
+        isActive={isSelected(k, "minor")}
+      />
     {/each}
   </div>
   <div class="th note">
     <div class="chord-type">7th</div>
     {#each keys as k}
-    <ChordButton />
+      <ChordButton
+        isLatest={isLatest(k, "min7")}
+        isActive={isSelected(k, "min7")}
+      />
     {/each}
   </div>
-  <button on:click={() => console.log(chords.subscribe)}> SUBS</button>
 </div>
 
 <style>
@@ -117,8 +125,6 @@ import KeyLabels from "./KeyLabels.svelte";
     display: flex;
     flex-direction: row;
   }
-  .note.major {
-  }
   .note.minor {
     padding-left: 60px;
   }
@@ -129,27 +135,5 @@ import KeyLabels from "./KeyLabels.svelte";
     width: 30px;
     display: flex;
     align-items: center;
-  }
-  
-  button {
-    font-family: inherit;
-    font-size: inherit;
-    padding: 1em 2em;
-    color: #ff3e00;
-    background-color: rgba(255, 62, 0, 0.1);
-    border-radius: 2em;
-    border: 2px solid rgba(255, 62, 0, 0);
-    outline: none;
-    width: 200px;
-    font-variant-numeric: tabular-nums;
-    cursor: pointer;
-  }
-
-  button:focus {
-    border: 2px solid #ff3e00;
-  }
-
-  button:active {
-    background-color: rgba(255, 62, 0, 0.2);
   }
 </style>
